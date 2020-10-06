@@ -25,6 +25,7 @@ import org.mapstruct.Mapping;
 @Mapper(uses = {DateMapper.class, BeerOrderLineMapper.class})
 public interface BeerOrderMapper {
 
+//    On the beerOrder you have a customer entity, you need to specify it's id
     @Mapping(target = "customerId", source = "customer.id")
     BeerOrderDto beerOrderToDto(BeerOrder beerOrder);
 
