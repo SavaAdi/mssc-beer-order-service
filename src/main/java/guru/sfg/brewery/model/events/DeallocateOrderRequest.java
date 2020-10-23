@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class DeallocateOrderRequest {
 
     private BeerOrderDto beerOrderDto;
+
 }

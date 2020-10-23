@@ -3,7 +3,6 @@ package guru.sfg.beer.order.service.sm.actions;
 import guru.sfg.beer.order.service.domain.BeerOrderEventEnum;
 import guru.sfg.beer.order.service.domain.BeerOrderStatusEnum;
 import guru.sfg.beer.order.service.services.BeerOrderManagerImpl;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.action.Action;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
-@RequiredArgsConstructor
 public class ValidationFailureAction implements Action<BeerOrderStatusEnum, BeerOrderEventEnum> {
 
     @Override
