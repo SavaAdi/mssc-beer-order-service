@@ -51,11 +51,12 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
 
         Optional<BeerOrder> beerOrderOptional = beerOrderRepository.findById(beerOrderId);
 
-        awaitForStatus(beerOrderId, BeerOrderStatusEnum.VALIDATED);
-
         beerOrderOptional.ifPresentOrElse(beerOrder -> {
             if (isValid){
                 sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.VALIDATION_PASSED);
+
+//            Solves state change / persistence racing
+                awaitForStatus(beerOrderId, BeerOrderStatusEnum.VALIDATED);
 
 //            So you get the current version of that object not the stale one
                 BeerOrder validatedOrder = beerOrderRepository.findById(beerOrderId).get();
