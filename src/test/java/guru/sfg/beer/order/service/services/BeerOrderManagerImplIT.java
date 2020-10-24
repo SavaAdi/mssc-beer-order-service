@@ -116,6 +116,7 @@ public class BeerOrderManagerImplIT {
         });
     }
 
+//    Might fail, persistence slower than actual change
     @Test
     void testFailedValidation() throws JsonProcessingException {
 
@@ -131,7 +132,6 @@ public class BeerOrderManagerImplIT {
 
         await().untilAsserted(() -> {
             BeerOrder foundOrder = beerOrderRepository.findById(beerOrder.getId()).get();
-
             assertEquals(BeerOrderStatusEnum.VALIDATION_EXCEPTION, foundOrder.getOrderStatus());
         });
 
